@@ -68,12 +68,12 @@ public class TeamScoreKeeper : MonoBehaviour
 
                 if(childTag.Equals(GameConstants.RED_TEAM_SCORE_TEXT_TAG))
                 {
-                    UpdateScoreText(child.GetComponent<Text>(), RedTeamScore);
+                    UpdateScoreText(child.GetComponent<TMPro.TextMeshProUGUI>(), RedTeamScore);
                 }
 
                 if(childTag == GameConstants.BLUE_TEAM_SCORE_TEXT_TAG)
                 {
-                    UpdateScoreText(child.GetComponent<Text>(), BlueTeamScore);
+                    UpdateScoreText(child.GetComponent<TMPro.TextMeshProUGUI>(), BlueTeamScore);
                 }
 
                 if (childTag == GameConstants.RED_TEAM_SCORE_BAR_TAG)
@@ -89,7 +89,7 @@ public class TeamScoreKeeper : MonoBehaviour
         }
     }
 
-    private void UpdateScoreText(Text textComponent, int score)
+    private void UpdateScoreText(TMPro.TextMeshProUGUI textComponent, int score)
     {
         textComponent.text = score.ToString();
     }

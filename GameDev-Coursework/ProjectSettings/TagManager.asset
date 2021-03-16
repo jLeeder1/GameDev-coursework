@@ -3,7 +3,17 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - bullet
+  - testBoundary
+  - NPC
+  - outOfBounds
+  - redTeamScoreText
+  - blueTeamScoreText
+  - redTeamScoreBar
+  - blueTeamScoreBar
+  - redTeamSpawnPoint
+  - blueTeamSpawnPoint
   layers:
   - Default
   - TransparentFX
@@ -13,10 +23,10 @@ TagManager:
   - UI
   - 
   - 
-  - 
-  - 
-  - 
-  - 
+  - edgeBoundary
+  - NPC
+  - outOfBounds
+  - projectile
   - 
   - 
   - 

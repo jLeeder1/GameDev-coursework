@@ -50,9 +50,6 @@ public class TeamScoreKeeper : MonoBehaviour
                 BlueTeamScore += 20;
                 break;
         }
-
-        Debug.Log($"Red team score: {RedTeamScore}");
-        Debug.Log($"Blue team score: {BlueTeamScore}");
     }
 
     public void UpdateScoreOnUI()

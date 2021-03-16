@@ -1,11 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class OutOfBounds : MonoBehaviour
 {
     [SerializeField]
     private LayerMask NPC;
+
+    [SerializeField]
+    private GameObject testTarget;
 
     private TeamScoreKeeper teamScoreKeeper;
 
@@ -19,7 +23,9 @@ public class OutOfBounds : MonoBehaviour
     {
         if ((NPC.value & 1 << collision.gameObject.layer) != 0)
         {
-            teamScoreKeeper.UpdateTeamScoreWithKill(GetTeamScoreToUpdate(collision.gameObject.GetComponent<TestNavMeshNPC>()));
+            TestNavMeshNPC npc = collision.gameObject.GetComponent<TestNavMeshNPC>();
+            teamScoreKeeper.UpdateTeamScoreWithKill(GetTeamScoreToUpdate(npc));
+            ReSpawnNPC(npc);
         }
     }
 
@@ -31,5 +37,25 @@ public class OutOfBounds : MonoBehaviour
         }
 
         return TeamScoreTypes.BlueTeamKill;
+    }
+
+    private void ReSpawnNPC(TestNavMeshNPC testNavMeshNPC)
+    {
+        string spawnPointTag = GameConstants.BLUE_TEAM_SPAWN_POINT;
+
+        if (testNavMeshNPC.isRedTeam)
+        {
+            spawnPointTag = GameConstants.RED_TEAM_SPAWN_POINT;
+        }
+
+        GameObject[] spawnPoints = GameObject.FindGameObjectsWithTag(spawnPointTag);
+
+        Transform spawnPointTransform = spawnPoints[Random.Range(0, spawnPoints.Length)].GetComponent<Transform>();
+
+        testNavMeshNPC.transform.position = spawnPointTransform.position;
+        testNavMeshNPC.ToggleAllDetectGroundWithRayInChildren(true);
+        testNavMeshNPC.GetComponent<NavMeshAgent>().enabled = true;
+        testNavMeshNPC.GetComponent<NavMeshAgent>().velocity = new Vector3(0f, 0f, 0f);
+        testNavMeshNPC.GetComponent<NavMeshAgent>().SetDestination(testTarget.transform.position);
     }
 }

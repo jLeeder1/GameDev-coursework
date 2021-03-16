@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 172974460189856289}
   - component: {fileID: 172974460189856288}
   - component: {fileID: 3860569055020585451}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: BulletPrefab
   m_TagString: bullet
   m_Icon: {fileID: 0}
@@ -28,13 +28,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 172974460189856291}
-  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 12.038, y: 12.36, z: -1.473}
+  m_LocalRotation: {x: -0, y: -0, z: -0.70436543, w: 0.7098376}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.05, y: 0.05, z: 0.05}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -89.55701}
 --- !u!33 &172974460189856319
 MeshFilter:
   m_ObjectHideFlags: 0

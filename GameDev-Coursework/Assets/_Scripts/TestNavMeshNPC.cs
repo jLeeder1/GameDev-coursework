@@ -14,6 +14,7 @@ public class TestNavMeshNPC : MonoBehaviour
 
     private float timer = 0.2f;
     private int limitOfRaysHittingGround = 2;
+    private int numberOfRaysHittingTheGround = 0;
     private DetectGroundWithRay[] detectGroundWithRaysInChildren;
 
     private void Start()
@@ -26,10 +27,30 @@ public class TestNavMeshNPC : MonoBehaviour
 
     private void FixedUpdate()
     {
-        DetectIfRaysAreOutOfBounds();
+        DetectNumberOfRaysOutOfBounds();
     }
 
-    private void DetectIfRaysAreOutOfBounds()
+    private void OnCollisionEnter(Collision collision)
+    {
+        if(collision.gameObject.tag == GameConstants.BULLET_TAG)
+        {
+            if (numberOfRaysHittingTheGround >= limitOfRaysHittingGround)
+            {
+                navMeshAgent.enabled = false;
+                ToggleAllDetectGroundWithRayInChildren(false);
+            }
+        }
+    }
+
+    public void ToggleAllDetectGroundWithRayInChildren(bool isEnabled)
+    {
+        foreach (DetectGroundWithRay detectGroundWithRay in detectGroundWithRaysInChildren)
+        {
+            detectGroundWithRay.enabled = isEnabled;
+        }
+    }
+
+    private void DetectNumberOfRaysOutOfBounds()
     {
         if(navMeshAgent.enabled == false)
         {
@@ -46,18 +67,6 @@ public class TestNavMeshNPC : MonoBehaviour
             }
         }
 
-        if(numOfRaysHittingGround >= limitOfRaysHittingGround)
-        {
-            navMeshAgent.enabled = false;
-            ToggleAllDetectGroundWithRayInChildren(false);
-        }
-    }
-
-    private void ToggleAllDetectGroundWithRayInChildren(bool isEnabled)
-    {
-        foreach (DetectGroundWithRay detectGroundWithRay in detectGroundWithRaysInChildren)
-        {
-            detectGroundWithRay.enabled = isEnabled;
-        }
+        numberOfRaysHittingTheGround = numOfRaysHittingGround;
     }
 }

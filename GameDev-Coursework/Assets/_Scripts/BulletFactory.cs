@@ -25,12 +25,16 @@ public class BulletFactory : MonoBehaviour
 
     public void InstantiateBullet()
     {
-        GameObject bulleltInstance = Instantiate(bullet, bulletSpawn.transform.position, bulletSpawn.transform.rotation);
-        Rigidbody bulletRigidbody = bulleltInstance.GetComponent<Rigidbody>();
-
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        if (Physics.Raycast(ray))
+        RaycastHit raycastHit;
+        if (Physics.Raycast(ray, out raycastHit))
         {
+            Vector3 relativePos = raycastHit.point - transform.position;
+            // the second argument, upwards, defaults to Vector3.up
+            Quaternion rotation = Quaternion.LookRotation(relativePos, Vector3.up);
+
+            GameObject bulleltInstance = Instantiate(bullet, bulletSpawn.transform.position, rotation);
+            Rigidbody bulletRigidbody = bulleltInstance.GetComponent<Rigidbody>();
             bulletRigidbody.AddForce(ray.direction * bulletThrust);
         }
     }

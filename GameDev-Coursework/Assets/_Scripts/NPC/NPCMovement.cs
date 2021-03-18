@@ -5,16 +5,21 @@ using UnityEngine.AI;
 
 public class NPCMovement : MonoBehaviour
 {
+    public bool IsOnOffMeshLink { get; private set; }
     private bool isMovementSetToChasePlayer;
     private NavMeshAgent navMeshAgent;
     private string opposingTeamTag;
 
     private float currentSpeed;
     private float stoppingDistance = 2f;
+    private int updateTargetCoolDownInSeconds = 3;
 
+    // Animations
     private Animator animator;
     private int walkingSpeedAnimatorId;
+    private int isJumpingUpId;
     private int jumpAnimatorId;
+    private bool isUpdateTargetCoolDownActive = false;
 
     void Start()
     {
@@ -26,6 +31,7 @@ public class NPCMovement : MonoBehaviour
 
         animator = GetComponent<Animator>();
         walkingSpeedAnimatorId = Animator.StringToHash("walkingSpeed");
+        isJumpingUpId = Animator.StringToHash("isJumpingUp");
     }
 
     // Update is called once per frame
@@ -33,6 +39,13 @@ public class NPCMovement : MonoBehaviour
     {
         currentSpeed = navMeshAgent.velocity.magnitude;
         animator.SetFloat(walkingSpeedAnimatorId, currentSpeed);
+
+        if (!isUpdateTargetCoolDownActive)
+        {
+            SetDestinationToRandomOpposingTeamMember();
+        }
+
+        IsNavMeshAgentOnNavMeshOffLink();
     }
 
     private void GetOpposingTeamTag()
@@ -49,5 +62,18 @@ public class NPCMovement : MonoBehaviour
     {
         Transform targetTransform = GameObject.FindGameObjectWithTag(opposingTeamTag).transform;
         navMeshAgent.SetDestination(targetTransform.position);
+        StartCoroutine(UpdateTargetDestinationCoolDown());
+    }
+
+    private IEnumerator UpdateTargetDestinationCoolDown()
+    {
+        isUpdateTargetCoolDownActive = true;
+        yield return new WaitForSeconds(updateTargetCoolDownInSeconds);
+        isUpdateTargetCoolDownActive = false;
+    }
+
+    private void IsNavMeshAgentOnNavMeshOffLink()
+    {
+        animator.SetBool(isJumpingUpId, navMeshAgent.isOnOffMeshLink);
     }
 }

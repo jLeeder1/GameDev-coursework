@@ -20,8 +20,6 @@ public class TestNavMeshNPC : MonoBehaviour
     private void Start()
     {
         navMeshAgent = GetComponent<NavMeshAgent>();
-        navMeshAgent.SetDestination(targetGameObject.transform.position);
-
         detectGroundWithRaysInChildren = GetComponentsInChildren<DetectGroundWithRay>();
     }
 

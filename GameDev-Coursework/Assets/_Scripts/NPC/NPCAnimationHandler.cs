@@ -15,10 +15,13 @@ public class NPCAnimationHandler : MonoBehaviour
     private int walkingSpeedAnimatorId;
     private int isJumpingUpId;
     private int jumpAnimatorId;
+    private int isJumpingDownId;
 
     // Cool down
     private int isJumpingUpCoolDownTimer = 2;
     private bool isJumpingUpCoolDownActive = false;
+    private int isJumpingDownCoolDownTimer = 1;
+    private bool isJumpingDownCoolDownActive = false;
 
     // Start is called before the first frame update
     void Start()
@@ -33,6 +36,7 @@ public class NPCAnimationHandler : MonoBehaviour
     {
         walkingSpeedAnimatorId = Animator.StringToHash("walkingSpeed");
         isJumpingUpId = Animator.StringToHash("isJumpingUp");
+        isJumpingDownId = Animator.StringToHash("isJumpingDown");
     }
 
     // Update is called once per frame
@@ -47,6 +51,7 @@ public class NPCAnimationHandler : MonoBehaviour
         }
 
         HandleNPCJumpingUpLedge();
+        HandleNPCJumpingDownLedge();
         //IsNavMeshAgentOnNavMeshOffLink();
     }
 
@@ -57,10 +62,26 @@ public class NPCAnimationHandler : MonoBehaviour
 
     private void HandleNPCJumpingUpLedge()
     {
-        if(navMeshAgent.currentOffMeshLinkData.endPos.y > navMeshAgent.currentOffMeshLinkData.startPos.y && !isJumpingUpCoolDownActive)
+        if(IsNextOffMeshLinkAboveCurrentLink() && !isJumpingUpCoolDownActive)
         {
             animator.SetBool(isJumpingUpId, true);
         }
+    }
+
+    private void HandleNPCJumpingDownLedge()
+    {
+        if (IsNextOffMeshLinkAboveCurrentLink() == false && !isJumpingDownCoolDownActive)
+        {
+            animator.SetBool(isJumpingDownId, true);
+        }
+    }
+
+    private bool IsNextOffMeshLinkAboveCurrentLink()
+    {
+        if (navMeshAgent.currentOffMeshLinkData.endPos.y > navMeshAgent.currentOffMeshLinkData.startPos.y)
+            return true;
+
+        return false;
     }
 
     public void CompleteOffNavMeshLink()
@@ -75,10 +96,24 @@ public class NPCAnimationHandler : MonoBehaviour
         StartCoroutine(IsJumpingUpCoolDown());
     }
 
+    public void ResetIsJumpingDown()
+    {
+        Debug.Log("Reset is jumping down test");
+        animator.SetBool(isJumpingDownId, false);
+        StartCoroutine(IsJumpingDownCoolDown());
+    }
+
     IEnumerator IsJumpingUpCoolDown()
     {
         isJumpingUpCoolDownActive = true;
         yield return new WaitForSeconds(isJumpingUpCoolDownTimer);
         isJumpingUpCoolDownActive = false;
+    }
+
+    IEnumerator IsJumpingDownCoolDown()
+    {
+        isJumpingDownCoolDownActive = true;
+        yield return new WaitForSeconds(isJumpingDownCoolDownTimer);
+        isJumpingDownCoolDownActive = false;
     }
 }

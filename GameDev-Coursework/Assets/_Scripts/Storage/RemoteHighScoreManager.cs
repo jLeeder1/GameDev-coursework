@@ -1,12 +1,9 @@
 ﻿using System;
 using System.Collections;
-using System.Collections.Generic;
-using System.IO;
-using System.Net;
-using System.Text.RegularExpressions;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.Networking;
+using UnityEngine.UI;
 
 public class HighScoreResultCallback : UnityEvent<HighScoreResult>
 {
@@ -27,17 +24,14 @@ public class HighScoreRequest
     public int Score;
 }
 
-[Serializable]
-public class HighScoreResultArray
-{
-    public HighScoreResult[] highScoreResults { get; set; }
-}
-
 public class RemoteHighScoreManager : MonoBehaviour
 {
     public static RemoteHighScoreManager Instance { get; private set; }
 
     public HighScoreResultCallback OnHighScoreGet = new HighScoreResultCallback();
+
+    [SerializeField]
+    private Text highScoreText;
 
     void Awake()
     {
@@ -53,14 +47,14 @@ public class RemoteHighScoreManager : MonoBehaviour
         HighScoreRequest highScoreRequest = new HighScoreRequest();
         highScoreRequest.Score = 420;
 
-        string requestUri = string.Format("https://eu-api.backendless.com/{0}/{1}/data/HighScore", Globals.APPLICATION_ID, Globals.REST_SECRET_KEY);
+        string requestUri = $"https://eu-api.backendless.com/{BackendlessStorageInfo.APPLICATION_ID}/{BackendlessStorageInfo.REST_SECRET_KEY}/data/HighScore";
         UnityWebRequest unityWebRequest = UnityWebRequest.Put(requestUri, JsonUtility.ToJson(highScoreRequest));
         unityWebRequest.SetRequestHeader("Content-Type", "application/json");
 
         yield return unityWebRequest.SendWebRequest();
         if (unityWebRequest.isNetworkError)
         {
-
+            highScoreText.text = BackendlessStorageInfo.NETWORK_ERROR_MESSAGE;
         }
         else
         {
@@ -71,14 +65,14 @@ public class RemoteHighScoreManager : MonoBehaviour
 
     public IEnumerator GetHighScoreCR(Action<int> OnCompleteCallback)
     {
-        string requestUri = string.Format("https://eu-api.backendless.com/{0}/{1}/data/HighScore/{2}", Globals.APPLICATION_ID, Globals.REST_SECRET_KEY, "00C80F61-E44C-44E4-BF80-8201C294409C");
+        string requestUri = $"https://eu-api.backendless.com/{BackendlessStorageInfo.APPLICATION_ID}/{BackendlessStorageInfo.REST_SECRET_KEY}/data/HighScore/{BackendlessStorageInfo.HIGH_SCORE_ID}";
         UnityWebRequest unityWebRequest = UnityWebRequest.Get(requestUri);
         unityWebRequest.SetRequestHeader("Content-Type", "application/json");
 
         yield return unityWebRequest.SendWebRequest();
         if (unityWebRequest.isNetworkError)
         {
-
+            highScoreText.text = BackendlessStorageInfo.NETWORK_ERROR_MESSAGE;
         }
         else
         {

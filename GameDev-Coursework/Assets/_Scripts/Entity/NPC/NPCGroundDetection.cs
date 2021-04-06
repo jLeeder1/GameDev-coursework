@@ -1,27 +1,16 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.AI;
 
-public class TestNavMeshNPC : MonoBehaviour
+public class NPCGroundDetection : MonoBehaviour
 {
-    [SerializeField]
-    GameObject targetGameObject;
-
-    public bool isRedTeam = true;
-
-    private NavMeshAgent navMeshAgent;
-
-    private float timer = 0.2f;
+    public DetectGroundWithRay[] detectGroundWithRaysInChildren { get; private set; }
     private int limitOfRaysHittingGround = 2;
     private int numberOfRaysHittingTheGround = 0;
-    private DetectGroundWithRay[] detectGroundWithRaysInChildren;
+    private NavMeshAgent navMeshAgent;
 
     private void Start()
     {
-        navMeshAgent = GetComponent<NavMeshAgent>();
-        navMeshAgent.SetDestination(targetGameObject.transform.position);
-
+        navMeshAgent = GetComponentInParent<NavMeshAgent>();
         detectGroundWithRaysInChildren = GetComponentsInChildren<DetectGroundWithRay>();
     }
 
@@ -32,7 +21,7 @@ public class TestNavMeshNPC : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if(collision.gameObject.tag == GameConstants.BULLET_TAG)
+        if (collision.gameObject.tag == GameConstants.BULLET_TAG)
         {
             if (numberOfRaysHittingTheGround >= limitOfRaysHittingGround)
             {
@@ -52,14 +41,14 @@ public class TestNavMeshNPC : MonoBehaviour
 
     private void DetectNumberOfRaysOutOfBounds()
     {
-        if(navMeshAgent.enabled == false)
+        if (navMeshAgent.enabled == false)
         {
             return;
         }
 
         int numOfRaysHittingGround = 0;
 
-        foreach(DetectGroundWithRay detectGroundWithRay in detectGroundWithRaysInChildren)
+        foreach (DetectGroundWithRay detectGroundWithRay in detectGroundWithRaysInChildren)
         {
             if (detectGroundWithRay.IsRayHittingGround())
             {

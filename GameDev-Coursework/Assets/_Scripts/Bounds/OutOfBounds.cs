@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.AI;
 
 public class OutOfBounds : MonoBehaviour
@@ -23,13 +21,13 @@ public class OutOfBounds : MonoBehaviour
     {
         if ((NPC.value & 1 << collision.gameObject.layer) != 0)
         {
-            TestNavMeshNPC npc = collision.gameObject.GetComponent<TestNavMeshNPC>();
+            NPC npc = collision.gameObject.GetComponent<NPC>();
             teamScoreKeeper.UpdateTeamScoreWithKill(GetTeamScoreToUpdate(npc));
             ReSpawnNPC(npc);
         }
     }
 
-    private TeamScoreTypes GetTeamScoreToUpdate(TestNavMeshNPC testNavMeshNPC)
+    private TeamScoreTypes GetTeamScoreToUpdate(NPC testNavMeshNPC)
     {
         if (testNavMeshNPC.isRedTeam)
         {
@@ -39,11 +37,11 @@ public class OutOfBounds : MonoBehaviour
         return TeamScoreTypes.BlueTeamKill;
     }
 
-    private void ReSpawnNPC(TestNavMeshNPC testNavMeshNPC)
+    private void ReSpawnNPC(NPC NPC)
     {
         string spawnPointTag = GameConstants.BLUE_TEAM_SPAWN_POINT;
 
-        if (testNavMeshNPC.isRedTeam)
+        if (NPC.isRedTeam)
         {
             spawnPointTag = GameConstants.RED_TEAM_SPAWN_POINT;
         }
@@ -52,10 +50,10 @@ public class OutOfBounds : MonoBehaviour
 
         Transform spawnPointTransform = spawnPoints[Random.Range(0, spawnPoints.Length)].GetComponent<Transform>();
 
-        testNavMeshNPC.transform.position = spawnPointTransform.position;
-        testNavMeshNPC.ToggleAllDetectGroundWithRayInChildren(true);
-        testNavMeshNPC.GetComponent<NavMeshAgent>().enabled = true;
-        testNavMeshNPC.GetComponent<NavMeshAgent>().velocity = new Vector3(0f, 0f, 0f);
-        testNavMeshNPC.GetComponent<NavMeshAgent>().SetDestination(testTarget.transform.position);
+        NPC.transform.position = spawnPointTransform.position;
+        NPC.nPCGroundDetection.ToggleAllDetectGroundWithRayInChildren(true);
+        NPC.GetComponent<NavMeshAgent>().enabled = true;
+        NPC.GetComponent<NavMeshAgent>().velocity = new Vector3(0f, 0f, 0f);
+        NPC.GetComponent<NavMeshAgent>().SetDestination(testTarget.transform.position);
     }
 }

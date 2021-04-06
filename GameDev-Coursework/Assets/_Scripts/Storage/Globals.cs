@@ -30,4 +30,7 @@ public static class BackendlessStorageInfo
 	// High score table
 	public static string HIGH_SCORE_TABLE_NAME = "HighScore";
 	public static string HIGH_SCORE_ID = "00C80F61-E44C-44E4-BF80-8201C294409C";
+
+	// Network error message
+	public static string NETWORK_ERROR_MESSAGE = "Network error";
 }

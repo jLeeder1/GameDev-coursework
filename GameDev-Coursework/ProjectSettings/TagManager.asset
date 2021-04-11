@@ -18,6 +18,8 @@ TagManager:
   - gunObject
   - sceneLoader
   - crossHair
+  - blueTeamGoal
+  - redTeamGoal
   layers:
   - Default
   - TransparentFX
@@ -31,8 +33,8 @@ TagManager:
   - NPC
   - outOfBounds
   - projectile
-  - 
-  - 
+  - player
+  - goal
   - 
   - 
   - 

@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 143741794}
   - component: {fileID: 143741795}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: GunState
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -55,7 +55,7 @@ GameObject:
   - component: {fileID: 164273900}
   - component: {fileID: 164273902}
   - component: {fileID: 164273901}
-  m_Layer: 5
+  m_Layer: 12
   m_Name: BlueTeamScoretext
   m_TagString: blueTeamScoreText
   m_Icon: {fileID: 0}
@@ -209,7 +209,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 609002271}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: BulletSpawn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -241,7 +241,7 @@ GameObject:
   - component: {fileID: 629791241}
   - component: {fileID: 629791243}
   - component: {fileID: 629791242}
-  m_Layer: 5
+  m_Layer: 12
   m_Name: BlueTeamBackground
   m_TagString: blueTeamScoreBar
   m_Icon: {fileID: 0}
@@ -313,7 +313,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 957169182}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: GunObject
   m_TagString: gunObject
   m_Icon: {fileID: 0}
@@ -346,7 +346,7 @@ GameObject:
   - component: {fileID: 1412140306}
   - component: {fileID: 1412140308}
   - component: {fileID: 1412140307}
-  m_Layer: 5
+  m_Layer: 12
   m_Name: RedTeamScoretext
   m_TagString: redTeamScoreText
   m_Icon: {fileID: 0}
@@ -502,7 +502,7 @@ GameObject:
   - component: {fileID: 1567602256}
   - component: {fileID: 1567602258}
   - component: {fileID: 1567602257}
-  m_Layer: 5
+  m_Layer: 12
   m_Name: RedTeamBackground
   m_TagString: redTeamScoreBar
   m_Icon: {fileID: 0}
@@ -576,7 +576,7 @@ GameObject:
   - component: {fileID: 1664941310}
   - component: {fileID: 1664941312}
   - component: {fileID: 1664941311}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: AssultRifle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -656,6 +656,30 @@ PrefabInstance:
       propertyPath: m_Name
       value: M4_8
       objectReference: {fileID: 0}
+    - target: {fileID: 1117582899397640, guid: 689946d975a0e55449b1e7ae41933e73, type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 1426050648627750, guid: 689946d975a0e55449b1e7ae41933e73, type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 1522581053908082, guid: 689946d975a0e55449b1e7ae41933e73, type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 1872817399433040, guid: 689946d975a0e55449b1e7ae41933e73, type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 1887184217783776, guid: 689946d975a0e55449b1e7ae41933e73, type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 1892571237583176, guid: 689946d975a0e55449b1e7ae41933e73, type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
     - target: {fileID: 4035219142733080, guid: 689946d975a0e55449b1e7ae41933e73, type: 3}
       propertyPath: m_LocalPosition.x
       value: 8.57
@@ -718,6 +742,18 @@ PrefabInstance:
     - target: {fileID: 100000, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 3}
       propertyPath: m_Name
       value: FPSController
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 100002, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 3}
+      propertyPath: m_Layer
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 3}
       propertyPath: m_LocalPosition.x
@@ -783,6 +819,10 @@ PrefabInstance:
       propertyPath: m_HeadBob.VerticaltoHorizontalRatio
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 696003714, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
     - target: {fileID: 696003715, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 3}
       propertyPath: m_LocalPosition.z
       value: 0
@@ -801,7 +841,7 @@ PrefabInstance:
       objectReference: {fileID: 2450633994071380645}
     - target: {fileID: 1443758419, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 3}
       propertyPath: m_Layer
-      value: 5
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 1443758419, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 3}
       propertyPath: m_Name

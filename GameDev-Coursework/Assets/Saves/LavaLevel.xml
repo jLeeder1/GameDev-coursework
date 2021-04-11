@@ -3,46 +3,24 @@
   <entityStates>
     <EntitySaveState>
       <Position>
-        <x>-4.617771</x>
+        <x>-5.40082026</x>
         <y>9.51</y>
-        <z>-16.6437359</z>
+        <z>-12.86753</z>
       </Position>
       <Rotation>
         <x>0</x>
-        <y>0.313992232</y>
+        <y>-0.3305142</y>
         <z>0</z>
-        <w>0.9494255</w>
+        <w>0.943801045</w>
         <eulerAngles>
-          <x>-0</x>
-          <y>36.5999756</y>
+          <x>0</x>
+          <y>321.400024</y>
           <z>0</z>
         </eulerAngles>
       </Rotation>
       <Name>Player</Name>
       <gameObjectTagReferences>
         <string />
-      </gameObjectTagReferences>
-    </EntitySaveState>
-    <EntitySaveState>
-      <Position>
-        <x>12.9737263</x>
-        <y>9.176193</y>
-        <z>-1.72951567</z>
-      </Position>
-      <Rotation>
-        <x>3.133303E-42</x>
-        <y>0.73892206</y>
-        <z>-2.858649E-42</z>
-        <w>-0.673791</w>
-        <eulerAngles>
-          <x>-0</x>
-          <y>264.720673</y>
-          <z>4.86067E-40</z>
-        </eulerAngles>
-      </Rotation>
-      <Name>NPC0</Name>
-      <gameObjectTagReferences>
-        <string>Player</string>
       </gameObjectTagReferences>
     </EntitySaveState>
   </entityStates>

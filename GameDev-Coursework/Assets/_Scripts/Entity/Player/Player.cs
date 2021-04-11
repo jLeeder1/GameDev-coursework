@@ -6,7 +6,7 @@ public class Player : Entity
 {
     public override string entityPrefabType { get => "FPSController"; }
 
-    private void Awake()
+    protected void Awake()
     {
         base.Awake();
         EntityUniqueIdentifier = "Player";

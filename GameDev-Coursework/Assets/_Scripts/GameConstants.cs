@@ -12,6 +12,9 @@
     public static string RED_TEAM_SPAWN_POINT= "redTeamSpawnPoint";
     public static string BLUE_TEAM_SPAWN_POINT= "blueTeamSpawnPoint";
 
+    public static string RED_TEAM_GOAL = "redTeamGoal"; // Red should defend this
+    public static string BLUE_TEAM_GOAL = "blueTeamGoal"; // Blue should defend this
+
     public static int SCORE_LIMIT = 100;
 
     // For storage unique names

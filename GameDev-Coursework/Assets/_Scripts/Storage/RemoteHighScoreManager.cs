@@ -39,7 +39,6 @@ public class RemoteHighScoreManager : MonoBehaviour
         if (Instance == null) { Instance = this; }
         else { Destroy(gameObject); }
         // do not destroy this object when we load the scene
-        DontDestroyOnLoad(gameObject);
     }
 
     public IEnumerator CreateHighScoreCR()

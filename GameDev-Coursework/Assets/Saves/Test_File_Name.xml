@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<GameState xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <entityStates>
+    <EntitySaveState>
+      <Position>
+        <x>12.9700012</x>
+        <y>9.498544</y>
+        <z>-1.73</z>
+      </Position>
+      <rotation>
+        <x>0</x>
+        <y>0.7077236</y>
+        <z>0</z>
+        <w>-0.7064895</w>
+        <eulerAngles>
+          <x>-0</x>
+          <y>269.9</y>
+          <z>0</z>
+        </eulerAngles>
+      </rotation>
+    </EntitySaveState>
+  </entityStates>
+</GameState>

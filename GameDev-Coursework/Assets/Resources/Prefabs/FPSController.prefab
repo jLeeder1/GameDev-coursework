@@ -645,6 +645,19 @@ MonoBehaviour:
     EntityPrefabType: 
     Name: 
     gameObjectTagReferences: []
+--- !u!114 &2308294968565311773
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2450633994069348485}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84ac92f2a7cc5de48b1dd6e2cdd3e549, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isRedTeam: 0
 --- !u!1001 &2450633993393240180
 PrefabInstance:
   m_ObjectHideFlags: 0

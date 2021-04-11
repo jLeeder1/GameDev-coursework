@@ -1,12 +1,8 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public class PlayerSaveState : EntitySaveObject
+﻿public class PlayerSaveState : EntitySaveObject
 {
-    private void Start()
+    protected void Start()
     {
-
+        base.Start();
     }
 
     public override EntitySaveState CreateEntitySaveState()

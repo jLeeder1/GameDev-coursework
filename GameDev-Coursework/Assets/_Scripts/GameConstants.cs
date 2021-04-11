@@ -1,6 +1,7 @@
 ﻿public static class GameConstants
 {
     public static string NPC_TAG = "NPC";
+    public static string FPSCONTROLLER = "FPSController";
     public static string PLAYER_TAG = "Player";
     public static string BULLET_TAG = "bullet";
 

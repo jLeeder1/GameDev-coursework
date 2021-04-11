@@ -39,10 +39,29 @@ public class LoadGameController : MonoBehaviour
     private Dictionary<string, GameObject> CreateObjects(GameState state)
     {
         Dictionary<string, GameObject> objects = new Dictionary<string, GameObject>(50);
+
+        int playerEntityIndex = 0;
+
+        // Find and spawn player first
         for (int i = 0; i < state.entityStates.Length; i++)
         {
+            if(state.entityStates[i].EntityPrefabType == "FPSController")
+            {
+                playerEntityIndex = i;
+                GameObject obj = entityLoadingHandler.CreateEntityFromSaveGame(state.entityStates[i]);
+                Entity entity = obj.GetComponent<Entity>();
+                objects.Add(entity.EntityUniqueIdentifier, obj);
+            }
+        }
+
+        for (int i = 0; i < state.entityStates.Length; i++)
+        {
+            if (i == playerEntityIndex)
+                continue;
+
             GameObject obj = entityLoadingHandler.CreateEntityFromSaveGame(state.entityStates[i]);
-            objects.Add(obj.name, obj);
+            Entity entity = obj.GetComponent<Entity>();
+            objects.Add(entity.EntityUniqueIdentifier, obj);
         }
         return objects;
     }

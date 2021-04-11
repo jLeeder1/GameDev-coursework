@@ -7,7 +7,7 @@ public abstract class EntitySaveObject : MonoBehaviour
     protected string entityPrefabType;
     protected Entity entity;
 
-    private void Start()
+    protected void Start()
     {
         entity = GetComponent<Entity>();
         entityPrefabType = entity.entityPrefabType;

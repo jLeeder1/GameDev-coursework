@@ -1,16 +1,12 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using UnityEngine;
+﻿using System.Collections.Generic;
 
 public class NPCSaveState : EntitySaveObject
 {
-    private NPC entity;
     private string uniqueIdentifier;
 
-    private void Start()
+    protected void Start()
     {
-        entity = GetComponent<NPC>();
+        base.Start();
         uniqueIdentifier = entity.EntityUniqueIdentifier;
     }
 
@@ -28,7 +24,7 @@ public class NPCSaveState : EntitySaveObject
     {
         List<string> gameObjectReferences = new List<string>()
         {
-            entity.targetGameObject.tag,
+            //entity.targetGameObject.tag,
         };
 
         return gameObjectReferences.ToArray();

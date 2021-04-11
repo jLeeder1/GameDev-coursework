@@ -58,7 +58,13 @@ public class EntityLoadingHandler : MonoBehaviour
             return NPCPrefab;
         }
 
-        return PlayerPrefab;
+        if(prefabType == "FPSController")
+        {
+            return PlayerPrefab;
+        }
+
+        Debug.LogError("Error EntityLoadingHandler line 66. Could not find prefab type in state so using NPC as default");
+        return NPCPrefab;
     }
 
     private List<SpawnPoint> GetListOfGivenSpawnPointTypes(string spawnPointTag)

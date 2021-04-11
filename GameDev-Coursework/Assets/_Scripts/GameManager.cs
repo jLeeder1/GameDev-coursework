@@ -76,5 +76,8 @@ public class GameManager : MonoBehaviour
         {
             entityLoadingHandler.SpawnTeams();
         }
+
+        Camera mainCamera = Camera.main;
+
     }
 }

@@ -24,7 +24,6 @@ public class NPCBehaviourHandler : MonoBehaviour
     {
         while (true)
         {
-            //for(NPCBehaviourStateBase nPCBehaviourStateBase in behaviourStateBases)
             for(int index = 0; index < behaviourStateBases.Count; index++)
             {
                 if (behaviourStateBases[index].ShouldTriggerBehaviour() || BehaviourRandomChance())
@@ -41,7 +40,7 @@ public class NPCBehaviourHandler : MonoBehaviour
     {
         int myRandomChance = Random.Range(0, 11);
 
-        if (myRandomChance > 7)
+        if (myRandomChance > randomChanceThreshold)
             return true;
 
         return false;

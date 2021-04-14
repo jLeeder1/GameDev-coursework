@@ -127,9 +127,10 @@ public class TeamScoreKeeper : MonoBehaviour
 
         if (playerScore > GameManager.GameManagerInstance.highScore)
         {
+            StartCoroutine(RemoteHighScoreManager.Instance.CreateHighScoreCR(newHighScore));
+
             while (!hasBackendlessScoreUpdated)
             {
-                StartCoroutine(RemoteHighScoreManager.Instance.CreateHighScoreCR(newHighScore));
                 yield return null;
 
                 if (RemoteHighScoreManager.Instance.hasUpdatedScore)

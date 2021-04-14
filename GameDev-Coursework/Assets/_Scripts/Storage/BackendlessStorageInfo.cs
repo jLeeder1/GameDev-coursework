@@ -8,8 +8,8 @@
 
 	//var url = "https://eu-api.backendless.com/BDF5EEE0-16C7-5A29-FF91-EDF335C23900/347BF7C1-C3BB-47EF-A1C4-7D60C88CCD6B/data/HighScore";
 
-	public static string APPLICATION_ID = "BDF5EEE0-16C7-5A29-FF91-EDF335C23900"; // you need to add your OWN id here!!
-	public static string REST_SECRET_KEY = "347BF7C1-C3BB-47EF-A1C4-7D60C88CCD6B"; // you need to add your OWN key here!!
+	public static string APPLICATION_ID = "BDF5EEE0-16C7-5A29-FF91-EDF335C23900";
+	public static string REST_SECRET_KEY = "347BF7C1-C3BB-47EF-A1C4-7D60C88CCD6B";
 
 	// High score table
 	public static string HIGH_SCORE_TABLE_NAME = "HighScore";

@@ -47,7 +47,8 @@ public class RemoteHighScoreManager : MonoBehaviour
         HighScoreRequest highScoreRequest = new HighScoreRequest();
         highScoreRequest.Score = newHighScore;
 
-        string requestUri = $"https://eu-api.backendless.com/{BackendlessStorageInfo.APPLICATION_ID}/{BackendlessStorageInfo.REST_SECRET_KEY}/data/HighScore";
+        //string requestUri = $"https://eu-api.backendless.com/{BackendlessStorageInfo.APPLICATION_ID}/{BackendlessStorageInfo.REST_SECRET_KEY}/data/HighScore";
+        string requestUri = $"https://eu-api.backendless.com/{BackendlessStorageInfo.APPLICATION_ID}/{BackendlessStorageInfo.REST_SECRET_KEY}/data/HighScore/{BackendlessStorageInfo.HIGH_SCORE_ID}";
         UnityWebRequest unityWebRequest = UnityWebRequest.Put(requestUri, JsonUtility.ToJson(highScoreRequest));
         unityWebRequest.SetRequestHeader("Content-Type", "application/json");
 

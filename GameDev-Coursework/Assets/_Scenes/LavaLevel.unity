@@ -12070,7 +12070,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1488128553}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.28, y: 9.72, z: -7.55}
+  m_LocalPosition: {x: 0.28, y: 9.72, z: -14.52}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children: []
   m_Father: {fileID: 0}
@@ -14705,6 +14705,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: aj
       objectReference: {fileID: 0}
+    - target: {fileID: 5866666021909216657, guid: 9161ee3042b18204c8c9af588269db95,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 41961c68270c4184db9377051729e55f, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9161ee3042b18204c8c9af588269db95, type: 3}
 --- !u!1 &1996032073 stripped
@@ -14762,7 +14767,7 @@ NavMeshAgent:
   m_AutoBraking: 1
   m_AutoRepath: 1
   m_Height: 1.78
-  m_BaseOffset: -0.06
+  m_BaseOffset: 0.1
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
 --- !u!114 &1996032077
@@ -14867,6 +14872,18 @@ MonoBehaviour:
     EntityPrefabType: 
     Name: 
     gameObjectTagReferences: []
+--- !u!114 &1996032085
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1996032073}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d9912c08396bbd4eb53f7ad2da2479d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1996698884
 GameObject:
   m_ObjectHideFlags: 0

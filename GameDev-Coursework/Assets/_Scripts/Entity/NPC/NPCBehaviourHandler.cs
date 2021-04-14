@@ -7,6 +7,8 @@ public class NPCBehaviourHandler : MonoBehaviour
     private List<NPCBehaviourStateBase> behaviourStateBases;
     private int behaviourCooldownInSeconds = 4;
     private int randomChanceThreshold = 7;
+    private NPCBehaviourStateBase NPCBehaviourStateBase;
+    private Vector3 Target;
 
     private void Start()
     {
@@ -30,10 +32,17 @@ public class NPCBehaviourHandler : MonoBehaviour
                 {
                     behaviourStateBases[index].PerformBehaviour();
                     index = 0; // To always iterate from the beginning
+                    Target = behaviourStateBases[index].CurrentDestination;
                     yield return new WaitForSeconds(behaviourCooldownInSeconds);
                 }
             }
         }
+    }
+
+    private void Update()
+    {
+        transform.LookAt(Target);
+        Debug.Log($"Look at: {Target}");
     }
 
     private bool BehaviourRandomChance()

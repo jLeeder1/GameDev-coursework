@@ -1,13 +1,11 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public struct GameState
+﻿public struct GameState
 {
     public EntitySaveState[] entityStates;
+    public ScoreStructureSaveState scoreStructure;
 
-    public GameState(EntitySaveState[] entityStates)
+    public GameState(EntitySaveState[] entityStates, ScoreStructureSaveState scoreStructure)
     {
         this.entityStates = entityStates;
+        this.scoreStructure = scoreStructure;
     }
 }

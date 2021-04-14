@@ -8,7 +8,7 @@ public class TeamScoreKeeper : MonoBehaviour
     private int redTeamScore = 0;
     private int blueTeamScore = 0;
     private int playerScore = 0;
-    private int maximumScore = 15; // change to 100
+    private int maximumScore = 100;
 
     [SerializeField]
     public int RedTeamScore
@@ -146,6 +146,19 @@ public class TeamScoreKeeper : MonoBehaviour
         bool isRedTeamWinner = IsRedTeamWinner();
         ScoreStructure scoreStructure = new ScoreStructure(blueTeamScore, redTeamScore, playerScore, winningScore, isRedTeamWinner);
         GameManager.GameManagerInstance.HandleEndGame(scoreStructure);
+    }
+
+    public ScoreStructureSaveState CreateScoreStrucutreStateForSaveGame()
+    {
+        return new ScoreStructureSaveState(blueTeamScore, redTeamScore, playerScore);
+    }
+
+    public void LoadScoresFromFile(int blueTeamScore, int redTeamScore, int playerScore)
+    {
+        this.blueTeamScore = blueTeamScore;
+        this.redTeamScore = redTeamScore;
+        this.playerScore = playerScore; // Don;t think i need to add score directly to player as this will be done upon them scoring a point
+        UpdateScoreOnUI();
     }
 
     private bool IsRedTeamWinner()

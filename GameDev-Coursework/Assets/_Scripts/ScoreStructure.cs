@@ -1,4 +1,6 @@
-﻿public class ScoreStructure
+﻿using System;
+
+public class ScoreStructure
 {
     public int blueTeamScore { get; private set; }
     public int redTeamScore { get; private set; }
@@ -13,5 +15,20 @@
         this.playerScore = playerScore;
         this.winningTeamScore = winningTeamScore;
         this.isRedTeamWinner = isRedTeamWinner;
+    }
+}
+
+[Serializable]
+public struct ScoreStructureSaveState
+{
+    public int blueTeamScore;
+    public int redTeamScore;
+    public int playerScore;
+
+    public ScoreStructureSaveState(int blueTeamScore, int redTeamScore, int playerScore)
+    {
+        this.blueTeamScore = blueTeamScore;
+        this.redTeamScore = redTeamScore;
+        this.playerScore = playerScore;
     }
 }

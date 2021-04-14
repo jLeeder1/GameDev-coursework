@@ -29,4 +29,19 @@
     public static string PREFAB_FOLDER_PREFIX = "Prefabs/";
     public static string PLAYER_PREFAB_SUFFIX = "FPSController";
     public static string NPC_PREFAB_SUFFIX = "NPC";
+
+    // Spawn look at
+    public static string BLUE_TEAM_ON_SPAWN_LOOK_AT = "blueTeamOnSpawnLookAt";
+    public static string RED_TEAM_ON_SPAWN_LOOK_AT = "redTeamOnSpawnLookAt";
+
+    // End game scene game object names
+    public static string PLAYER_SCORE_TEXT_OBJECT = "PlayerScoreText";
+    public static string BLUE_TEAM_SCORE_TEXT_OBJECT = "BlueTeamScore";
+    public static string RED_TEAM_SCORE_Text_OBJECT = "RedTeamScore";
+    public static string WINNING_TEAM_TEXT_OBJECT = "WinningTeamText";
+
+    // Colors
+    public static string RED_TEAM_COLOR = "76000F";
+    public static string BLUE_TEAM_COLOR = "5383FF";
+    public static string EDGE_ORANGE = "F39361";
 }

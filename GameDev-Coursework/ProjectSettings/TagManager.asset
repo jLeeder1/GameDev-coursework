@@ -20,6 +20,9 @@ TagManager:
   - crossHair
   - blueTeamGoal
   - redTeamGoal
+  - redTeamOnSpawnLookAt
+  - blueTeamOnSpawnLookAt
+  - playerScoreObject
   layers:
   - Default
   - TransparentFX

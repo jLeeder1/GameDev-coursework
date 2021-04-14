@@ -29,7 +29,11 @@ public class NPCPatrolBehaviour : NPCBehaviourStateBase
         if(distanceToNextPatrolPoint < 2f)
         {
             patrolPoints.Remove(CurrentDestination);
-            CurrentDestination = patrolPoints.First();
+
+            if(patrolPoints.Count > 0)
+            {
+                CurrentDestination = patrolPoints.First();
+            }
         }
     }
 

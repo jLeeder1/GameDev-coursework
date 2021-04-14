@@ -29,6 +29,7 @@ public class RemoteHighScoreManager : MonoBehaviour
     public static RemoteHighScoreManager Instance { get; private set; }
 
     public HighScoreResultCallback OnHighScoreGet = new HighScoreResultCallback();
+    public bool hasUpdatedScore { get; set; }
 
     [SerializeField]
     private Text highScoreText;
@@ -41,12 +42,13 @@ public class RemoteHighScoreManager : MonoBehaviour
         // do not destroy this object when we load the scene
     }
 
-    public IEnumerator CreateHighScoreCR()
+    public IEnumerator CreateHighScoreCR(int newHighScore)
     {
         HighScoreRequest highScoreRequest = new HighScoreRequest();
-        highScoreRequest.Score = 420;
+        highScoreRequest.Score = newHighScore;
 
-        string requestUri = $"https://eu-api.backendless.com/{BackendlessStorageInfo.APPLICATION_ID}/{BackendlessStorageInfo.REST_SECRET_KEY}/data/HighScore";
+        //string requestUri = $"https://eu-api.backendless.com/{BackendlessStorageInfo.APPLICATION_ID}/{BackendlessStorageInfo.REST_SECRET_KEY}/data/HighScore";
+        string requestUri = $"https://eu-api.backendless.com/{BackendlessStorageInfo.APPLICATION_ID}/{BackendlessStorageInfo.REST_SECRET_KEY}/data/HighScore/{BackendlessStorageInfo.HIGH_SCORE_ID}";
         UnityWebRequest unityWebRequest = UnityWebRequest.Put(requestUri, JsonUtility.ToJson(highScoreRequest));
         unityWebRequest.SetRequestHeader("Content-Type", "application/json");
 
@@ -60,6 +62,8 @@ public class RemoteHighScoreManager : MonoBehaviour
             HighScoreResult result = JsonUtility.FromJson<HighScoreResult>(unityWebRequest.downloadHandler.text);
             PlayerPrefs.SetString("HighScoreObjectId", result.objectId);
         }
+
+        hasUpdatedScore = true;
     }
 
     public IEnumerator GetHighScoreCR(Action<int> OnCompleteCallback)
@@ -76,6 +80,7 @@ public class RemoteHighScoreManager : MonoBehaviour
         else
         {
             HighScoreResult result = JsonUtility.FromJson<HighScoreResult>(unityWebRequest.downloadHandler.text);
+            GameManager.GameManagerInstance.highScore = result.Score;
             OnCompleteCallback.Invoke(result.Score);
         }
     }

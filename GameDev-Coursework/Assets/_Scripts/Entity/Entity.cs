@@ -1,5 +1,4 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -9,12 +8,14 @@ public abstract class Entity : MonoBehaviour
     public TeamGoalLocation goalToScoreIn { get; private set; }
     public abstract string entityPrefabType { get; }
     public bool isRedTeam = true;
+    public TeamType teamType;
+    public Vector3 originalScale { get; private set; }
     protected NavMeshAgent navMeshAgent;
     private Entity entityShotMeLast;
 
-
     protected void Awake()
     {
+        originalScale = transform.localScale;
         SetGoalLocation();
     }
 
@@ -27,9 +28,25 @@ public abstract class Entity : MonoBehaviour
     {
         string goalTag = GameConstants.RED_TEAM_GOAL;
 
-        if(isRedTeam)
+        if(teamType == TeamType.RED_TEAM)
             goalTag = GameConstants.BLUE_TEAM_GOAL;
 
         goalToScoreIn = GameObject.FindGameObjectWithTag(goalTag).GetComponent<TeamGoalLocation>();
     }
+
+    public abstract void SpecialisedSpawnHelper();
+
+    public IEnumerator SpawnResizer()
+    {
+        transform.localScale = new Vector3(0.001f, 0.001f, 0.001f);
+        yield return new WaitForSeconds(1);
+        transform.localScale = originalScale;
+        SpecialisedSpawnHelper();
+    }
+}
+
+public enum TeamType
+{
+    RED_TEAM,
+    BLUE_TEAM
 }

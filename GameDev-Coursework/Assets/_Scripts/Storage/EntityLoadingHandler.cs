@@ -13,6 +13,9 @@ public class EntityLoadingHandler : MonoBehaviour
     private List<SpawnPoint> blueTeamSpawnPoints;
     private List<SpawnPoint> redTeamSpawnPoints;
 
+    Vector3 redTeamLookAtOnSpawn;
+    Vector3 blueTeamLookAtOnSpawn;
+
     private void Awake()
     {
         PlayerPrefab = (GameObject)Resources.Load($"{GameConstants.PREFAB_FOLDER_PREFIX}{GameConstants.PLAYER_PREFAB_SUFFIX}");
@@ -33,9 +36,12 @@ public class EntityLoadingHandler : MonoBehaviour
         // Spawn Player
         foreach (SpawnPoint blueTeamSpawnPoint in blueTeamSpawnPoints)
         {
-            if(playerCounter == 0)
+            Vector3 spawnPosition = blueTeamSpawnPoint.transform.position;
+            Quaternion rotation = GetRotationToLookAtOnSpawn(spawnPosition, blueTeamLookAtOnSpawn);
+
+            if (playerCounter == 0)
             {
-                SpawnSingleEntity(PlayerPrefab, blueTeamSpawnPoint.transform.position);
+                SpawnSingleEntity(PlayerPrefab, spawnPosition, rotation);
                 playerCounter++;
             }
             else
@@ -47,8 +53,18 @@ public class EntityLoadingHandler : MonoBehaviour
         // Spawn red team entities
         foreach (SpawnPoint redTeamSpawnPoint in redTeamSpawnPoints)
         {
-            SpawnSingleEntity(NPCPrefab, redTeamSpawnPoint.transform.position);
+            Vector3 spawnPosition = redTeamSpawnPoint.transform.position;
+            Quaternion rotation = GetRotationToLookAtOnSpawn(spawnPosition, blueTeamLookAtOnSpawn);
+
+            SpawnSingleEntity(NPCPrefab, redTeamSpawnPoint.transform.position, rotation);
         }
+    }
+
+    private Quaternion GetRotationToLookAtOnSpawn(Vector3 spawnPosition, Vector3 vectorToLookAt)
+    {
+        Vector3 direction = (vectorToLookAt - spawnPosition).normalized;
+        Quaternion lookDirection = Quaternion.LookRotation(direction);
+        return lookDirection;
     }
 
     private GameObject GetPrefabFromString(string prefabType)
@@ -76,14 +92,20 @@ public class EntityLoadingHandler : MonoBehaviour
         return spawnPoints;
     }
 
-    private GameObject SpawnSingleEntity(GameObject prefab, Vector3 position)
+    private GameObject SpawnSingleEntity(GameObject prefab, Vector3 position, Quaternion rotation)
     {
-        return GameObject.Instantiate(prefab, position, Quaternion.identity);
+        return GameObject.Instantiate(prefab, position, rotation);
     }
 
     private void GetLevelSpawnPoints()
     {
         blueTeamSpawnPoints = GetListOfGivenSpawnPointTypes(GameConstants.BLUE_TEAM_SPAWN_POINT);
         redTeamSpawnPoints = GetListOfGivenSpawnPointTypes(GameConstants.RED_TEAM_SPAWN_POINT);
+
+        GameObject redTeamLookAtOnSpawnObj = GameObject.FindGameObjectWithTag(GameConstants.RED_TEAM_ON_SPAWN_LOOK_AT);
+        GameObject blueTeamLookAtOnSpawnObj = GameObject.FindGameObjectWithTag(GameConstants.BLUE_TEAM_ON_SPAWN_LOOK_AT);
+
+        redTeamLookAtOnSpawn = redTeamLookAtOnSpawnObj.transform.position;
+        blueTeamLookAtOnSpawn = blueTeamLookAtOnSpawnObj.transform.position;
     }
 }

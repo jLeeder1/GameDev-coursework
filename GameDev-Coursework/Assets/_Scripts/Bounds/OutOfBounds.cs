@@ -7,14 +7,19 @@ public class OutOfBounds : MonoBehaviour
     private LayerMask NPC;
 
     [SerializeField]
+    private LayerMask PlayerLayerMask;
+
+    [SerializeField]
     private GameObject testTarget;
 
     private TeamScoreKeeper teamScoreKeeper;
+    private EntityRespawner entityRespawner;
 
     // Start is called before the first frame update
     void Start()
     {
         teamScoreKeeper = GameObject.FindObjectOfType<TeamScoreKeeper>();
+        entityRespawner = gameObject.AddComponent<EntityRespawner>();
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -22,38 +27,25 @@ public class OutOfBounds : MonoBehaviour
         if ((NPC.value & 1 << collision.gameObject.layer) != 0)
         {
             NPC npc = collision.gameObject.GetComponent<NPC>();
-            teamScoreKeeper.UpdateTeamScoreWithKill(GetTeamScoreToUpdate(npc));
-            ReSpawnNPC(npc);
+            teamScoreKeeper.UpdateTeamScoreWithKill(GetTeamScoreToUpdate(npc), npc);
+            entityRespawner.ReSpawnEntity(npc);
+        }
+
+        if ((PlayerLayerMask.value & 1 << collision.gameObject.layer) != 0)
+        {
+            Player player = collision.gameObject.GetComponent<Player>();
+            teamScoreKeeper.UpdateTeamScoreWithKill(GetTeamScoreToUpdate(player), player);
+            entityRespawner.ReSpawnEntity(player);
         }
     }
 
-    private TeamScoreTypes GetTeamScoreToUpdate(NPC testNavMeshNPC)
+    private TeamScoreTypes GetTeamScoreToUpdate(Entity entity)
     {
-        if (testNavMeshNPC.isRedTeam)
+        if (entity.teamType == TeamType.RED_TEAM)
         {
             return TeamScoreTypes.RedTeamKill;
         }
 
         return TeamScoreTypes.BlueTeamKill;
-    }
-
-    private void ReSpawnNPC(NPC NPC)
-    {
-        string spawnPointTag = GameConstants.BLUE_TEAM_SPAWN_POINT;
-
-        if (NPC.isRedTeam)
-        {
-            spawnPointTag = GameConstants.RED_TEAM_SPAWN_POINT;
-        }
-
-        GameObject[] spawnPoints = GameObject.FindGameObjectsWithTag(spawnPointTag);
-
-        Transform spawnPointTransform = spawnPoints[Random.Range(0, spawnPoints.Length)].GetComponent<Transform>();
-
-        NPC.transform.position = spawnPointTransform.position;
-        NPC.nPCGroundDetection.ToggleAllDetectGroundWithRayInChildren(true);
-        NPC.GetComponent<NavMeshAgent>().enabled = true;
-        NPC.GetComponent<NavMeshAgent>().velocity = new Vector3(0f, 0f, 0f);
-        NPC.GetComponent<NavMeshAgent>().SetDestination(testTarget.transform.position);
     }
 }

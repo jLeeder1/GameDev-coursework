@@ -9,6 +9,12 @@ public class GameManager : MonoBehaviour
 
     private Scene activeScene;
     private EntityLoadingHandler entityLoadingHandler;
+    private EndGameHandler endGameHandler;
+    public ScoreStructure previousGameScoreStrucutre { get; private set; }
+    public int highScore { get; set; }
+    private int endGameSceneIndex = 3;
+    private int mainMenuSceneIndex = 0;
+    private int singlePlayerMenuSceneIndex = 1;
 
     public static GameManager GameManagerInstance
     {
@@ -28,17 +34,8 @@ public class GameManager : MonoBehaviour
         DontDestroyOnLoad(this.gameObject);
         loadGameController = gameObject.AddComponent<LoadGameController>();
         entityLoadingHandler = gameObject.AddComponent<EntityLoadingHandler>();
+        endGameHandler = gameObject.AddComponent<EndGameHandler>();
     }
-
-    // Game manager needs to:
-    // - Store active scene
-    // - Persist accross scenes
-    // - Switch scenes
-    // - Be a singleton
-    // - Save the game state
-    // - Load the game state
-
-    // Need to implement spawn points before saving and loading
 
     public Scene GetActiveScene() => activeScene;
 
@@ -65,6 +62,17 @@ public class GameManager : MonoBehaviour
 
         activeScene = SceneManager.GetActiveScene();
 
+        if(activeScene.buildIndex == endGameSceneIndex)
+        {
+            Cursor.lockState = CursorLockMode.Confined;
+            endGameHandler.HandleEndGame(previousGameScoreStrucutre);
+        }
+
+        if(IsAMenuScene(activeScene.buildIndex))
+        {
+            yield break;
+        }
+
         // If fileName is not empty then load from file
         if(!fileName.Equals(string.Empty))
         {
@@ -77,7 +85,32 @@ public class GameManager : MonoBehaviour
             entityLoadingHandler.SpawnTeams();
         }
 
-        Camera mainCamera = Camera.main;
+        Camera mainCamera = Camera.main; // What is this for?
 
+    }
+
+    public void HandleEndGame(ScoreStructure scoreStructure)
+    {
+        previousGameScoreStrucutre = scoreStructure;
+
+        // Set new high score in backendless
+        if(scoreStructure.playerScore > highScore)
+        {
+            StartCoroutine(RemoteHighScoreManager.Instance.CreateHighScoreCR(scoreStructure.playerScore));
+        }
+
+        StartCoroutine(LoadScene(endGameSceneIndex));
+    }
+
+    private bool IsAMenuScene(int buildIndex)
+    {
+        if (buildIndex == mainMenuSceneIndex ||
+            buildIndex == singlePlayerMenuSceneIndex ||
+            buildIndex == endGameSceneIndex)
+        {
+            return true;
+        }
+
+        return false;
     }
 }

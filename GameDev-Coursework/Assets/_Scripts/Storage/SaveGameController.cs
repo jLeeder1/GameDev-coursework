@@ -29,9 +29,14 @@ public class SaveGameController : MonoBehaviour
 
     private GameState CreateGameState()
     {
+        // Entities
         EntitySaveState[] entitySaveStates = GetAllEnitySaveStates();
 
-        return new GameState(entitySaveStates);
+        // Score
+        TeamScoreKeeper teamScoreKeeper = GameObject.FindObjectOfType<TeamScoreKeeper>();
+        ScoreStructureSaveState scoreStructureSaveState = teamScoreKeeper.CreateScoreStrucutreStateForSaveGame();
+
+        return new GameState(entitySaveStates, scoreStructureSaveState);
     }
 
     private EntitySaveState[] GetAllEnitySaveStates()

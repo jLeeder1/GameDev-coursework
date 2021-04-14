@@ -20,6 +20,7 @@ public class LoadGameController : MonoBehaviour
         ClearScene();
         GameState gameState = LoadState(fileName);
         Dictionary<string, GameObject> objects = CreateObjects(gameState);
+        LoadScoreFromFile(gameState.scoreStructure);
     }
 
     private void LoadSceneFromRecord(GameState state)
@@ -84,6 +85,12 @@ public class LoadGameController : MonoBehaviour
 
         //LoadSceneFromRecord(state); was void return before
         return state;
+    }
+
+    private void LoadScoreFromFile(ScoreStructureSaveState scoreStructureSaveState)
+    {
+        TeamScoreKeeper teamScoreKeeper = GameObject.FindObjectOfType<TeamScoreKeeper>();
+        teamScoreKeeper.LoadScoresFromFile(scoreStructureSaveState.blueTeamScore, scoreStructureSaveState.redTeamScore, scoreStructureSaveState.playerScore);
     }
 
     /*

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class NPCBehaviourHandler : MonoBehaviour
 {
@@ -9,6 +10,7 @@ public class NPCBehaviourHandler : MonoBehaviour
     private int randomChanceThreshold = 7;
     private NPCBehaviourStateBase NPCBehaviourStateBase;
     private Vector3 Target;
+    private NavMeshAgent navMeshAgent;
 
     private void Start()
     {
@@ -19,6 +21,7 @@ public class NPCBehaviourHandler : MonoBehaviour
             GetComponent<NPCPatrolBehaviour>()
         };
 
+        navMeshAgent = GetComponent<NavMeshAgent>();
         StartCoroutine(PerformBehaviours());
     }
 
@@ -32,7 +35,7 @@ public class NPCBehaviourHandler : MonoBehaviour
                 {
                     behaviourStateBases[index].PerformBehaviour();
                     index = 0; // To always iterate from the beginning
-                    Target = behaviourStateBases[index].CurrentDestination;
+                    //Target = behaviourStateBases[index].CurrentDestination;
                     yield return new WaitForSeconds(behaviourCooldownInSeconds);
                 }
             }

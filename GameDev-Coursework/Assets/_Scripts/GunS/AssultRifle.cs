@@ -11,11 +11,14 @@ public class AssultRifle : MonoBehaviour
 
     private bool canFireBullet;
 
+    private AudioSource audioSource;
+
     // Start is called before the first frame update
     void Start()
     {
         bulletFactory = GetComponent<BulletFactory>();
         canFireBullet = true;
+        audioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -30,6 +33,7 @@ public class AssultRifle : MonoBehaviour
         {
             bulletFactory.InstantiateBullet();
             StartCoroutine(CanFireBullet());
+            audioSource.Play();
         }
     }
 

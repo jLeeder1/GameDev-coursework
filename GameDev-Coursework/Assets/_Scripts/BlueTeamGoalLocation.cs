@@ -8,6 +8,7 @@ public class BlueTeamGoalLocation : TeamGoalLocation
         {
             teamScoreKeeper.UpdateTeamScoreWithKill(TeamScoreTypes.RedTeamSacrifice, entity);
             entityRespawner.ReSpawnEntity(entity);
+            PlayScoreSound();
         }
     }
 }

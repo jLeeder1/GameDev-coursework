@@ -13,6 +13,8 @@ public abstract class Entity : MonoBehaviour
     protected NavMeshAgent navMeshAgent;
     private Entity entityShotMeLast;
 
+    public AudioSource deathSound;
+
     protected void Awake()
     {
         originalScale = transform.localScale;
@@ -42,6 +44,11 @@ public abstract class Entity : MonoBehaviour
         yield return new WaitForSeconds(1);
         transform.localScale = originalScale;
         SpecialisedSpawnHelper();
+    }
+
+    public void PlayDeathSound()
+    {
+        deathSound.Play();
     }
 }
 

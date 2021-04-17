@@ -15,6 +15,8 @@ public class GameManager : MonoBehaviour
     private int endGameSceneIndex = 3;
     private int mainMenuSceneIndex = 0;
     private int singlePlayerMenuSceneIndex = 1;
+    private int mountainLevelSceneIndex = 4;
+    private int creditSceneIndex = 5;
 
     public static GameManager GameManagerInstance
     {
@@ -106,7 +108,8 @@ public class GameManager : MonoBehaviour
     {
         if (buildIndex == mainMenuSceneIndex ||
             buildIndex == singlePlayerMenuSceneIndex ||
-            buildIndex == endGameSceneIndex)
+            buildIndex == endGameSceneIndex ||
+            buildIndex == creditSceneIndex)
         {
             return true;
         }

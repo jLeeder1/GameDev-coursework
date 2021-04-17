@@ -7,7 +7,8 @@ public static class SaveFileHelper
 {
     private static Dictionary<int, string> indexToNameDictionary = new Dictionary<int, string>()
     {
-        {2, "LavaLevel" }
+        {2, "LavaLevel" },
+        {4, "MountainLevel" }
     };
 
     public static string GetFileNameFromSceneName(string sceneName)

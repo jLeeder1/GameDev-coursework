@@ -9,6 +9,12 @@ public class TeamScoreKeeper : MonoBehaviour
     private int blueTeamScore = 0;
     private int playerScore = 0;
     private int maximumScore = 100;
+    private Player player;
+
+    private void Start()
+    {
+        StartCoroutine(FindBackgroundMusicSource());
+    }
 
     [SerializeField]
     public int RedTeamScore
@@ -65,6 +71,7 @@ public class TeamScoreKeeper : MonoBehaviour
             playerScore += scoreToAdd;
         }
 
+        player.UpdateMusicSpeed(scoreToAdd);
         UpdateScoreOnUI();
         CheckEndGametrigger();
     }
@@ -169,6 +176,19 @@ public class TeamScoreKeeper : MonoBehaviour
         }
 
         return false;
+    }
+
+    private IEnumerator FindBackgroundMusicSource()
+    {
+        while(player == null)
+        {
+            if (FindObjectOfType<Player>() != null)
+            {
+                Player player = FindObjectOfType<Player>();
+                this.player = player;
+            }
+            yield return null;
+        }
     }
 }
 

@@ -1,5 +1,9 @@
-﻿public class Player : Entity
+﻿using UnityEngine;
+
+public class Player : Entity
 {
+    public AudioSource musicAudioSource;
+
     public override string entityPrefabType { get => "FPSController"; }
 
     public int PlayerScore { get; set; }
@@ -16,5 +20,10 @@
         EntityUniqueIdentifier = "Player";
         isRedTeam = false;
         PlayerScore = 0;
+    }
+
+    public void UpdateMusicSpeed(float increaseAmount)
+    {
+        musicAudioSource.pitch += increaseAmount/150;
     }
 }

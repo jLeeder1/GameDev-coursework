@@ -2,6 +2,7 @@
 
 public abstract class TeamGoalLocation : MonoBehaviour
 {
+    public AudioSource audioSource;
     protected TeamScoreKeeper teamScoreKeeper;
     protected EntityRespawner entityRespawner;
 
@@ -22,4 +23,6 @@ public abstract class TeamGoalLocation : MonoBehaviour
     }
 
     protected abstract void AddPointToTeam(Entity entity);
+
+    protected void PlayScoreSound() => audioSource.Play();
 }

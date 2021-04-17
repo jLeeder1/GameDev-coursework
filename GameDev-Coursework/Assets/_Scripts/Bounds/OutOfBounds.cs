@@ -22,7 +22,7 @@ public class OutOfBounds : MonoBehaviour
         entityRespawner = gameObject.AddComponent<EntityRespawner>();
     }
 
-    private void OnCollisionEnter(Collision collision)
+    void OnCollisionEnter(Collision collision)
     {
         if ((NPC.value & 1 << collision.gameObject.layer) != 0)
         {
@@ -39,13 +39,32 @@ public class OutOfBounds : MonoBehaviour
         }
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if ((NPC.value & 1 << other.gameObject.layer) != 0)
+        {
+            NPC npc = other.gameObject.GetComponent<NPC>();
+            teamScoreKeeper.UpdateTeamScoreWithKill(GetTeamScoreToUpdate(npc), npc);
+            entityRespawner.ReSpawnEntity(npc);
+            npc.PlayDeathSound();
+        }
+
+        if ((PlayerLayerMask.value & 1 << other.gameObject.layer) != 0)
+        {
+            Player player = other.gameObject.GetComponent<Player>();
+            teamScoreKeeper.UpdateTeamScoreWithKill(GetTeamScoreToUpdate(player), player);
+            entityRespawner.ReSpawnEntity(player);
+            player.PlayDeathSound();
+        }
+    }
+
     private TeamScoreTypes GetTeamScoreToUpdate(Entity entity)
     {
         if (entity.teamType == TeamType.RED_TEAM)
         {
-            return TeamScoreTypes.RedTeamKill;
+            return TeamScoreTypes.BlueTeamKill;
         }
 
-        return TeamScoreTypes.BlueTeamKill;
+        return TeamScoreTypes.RedTeamKill;
     }
 }

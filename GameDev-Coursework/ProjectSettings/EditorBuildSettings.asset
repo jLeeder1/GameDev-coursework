@@ -17,4 +17,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/_Scenes/EndGameScene.unity
     guid: 7f51482f2b523f7419b6057e0d51c314
+  - enabled: 1
+    path: Assets/_Scenes/MountainLevel.unity
+    guid: 202bb582bcd806444987d8fcd31e0103
+  - enabled: 1
+    path: Assets/_Scenes/CreditsScene.unity
+    guid: 87a358f43977f584f9c9cb74de3585da
   m_configObjects: {}

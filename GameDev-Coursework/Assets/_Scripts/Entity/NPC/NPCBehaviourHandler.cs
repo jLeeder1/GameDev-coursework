@@ -23,6 +23,7 @@ public class NPCBehaviourHandler : MonoBehaviour
 
         navMeshAgent = GetComponent<NavMeshAgent>();
         StartCoroutine(PerformBehaviours());
+        //Debug.Log("Turn on NPCBehaviourHandler.cs");
     }
 
     IEnumerator PerformBehaviours()
@@ -35,7 +36,8 @@ public class NPCBehaviourHandler : MonoBehaviour
                 {
                     behaviourStateBases[index].PerformBehaviour();
                     index = 0; // To always iterate from the beginning
-                    //Target = behaviourStateBases[index].CurrentDestination;
+                    Target = behaviourStateBases[index].CurrentDestination;
+                    transform.LookAt(Target);
                     yield return new WaitForSeconds(behaviourCooldownInSeconds);
                 }
             }
@@ -44,7 +46,6 @@ public class NPCBehaviourHandler : MonoBehaviour
 
     private void Update()
     {
-        transform.LookAt(Target);
         Debug.Log($"Look at: {Target}");
     }
 

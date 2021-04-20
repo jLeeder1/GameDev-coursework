@@ -54,9 +54,9 @@ public class EntityLoadingHandler : MonoBehaviour
         foreach (SpawnPoint redTeamSpawnPoint in redTeamSpawnPoints)
         {
             Vector3 spawnPosition = redTeamSpawnPoint.transform.position;
-            Quaternion rotation = GetRotationToLookAtOnSpawn(spawnPosition, blueTeamLookAtOnSpawn);
+            //Quaternion rotation = GetRotationToLookAtOnSpawn(spawnPosition, redTeamLookAtOnSpawn);
 
-            SpawnSingleEntity(NPCPrefab, redTeamSpawnPoint.transform.position, rotation);
+            SpawnSingleEntity(NPCPrefab, redTeamSpawnPoint.transform.position, Quaternion.identity);
         }
     }
 
@@ -94,7 +94,11 @@ public class EntityLoadingHandler : MonoBehaviour
 
     private GameObject SpawnSingleEntity(GameObject prefab, Vector3 position, Quaternion rotation)
     {
-        return GameObject.Instantiate(prefab, position, rotation);
+        GameObject gameObject = GameObject.Instantiate(prefab);
+        gameObject.transform.position = position;
+        gameObject.transform.rotation = rotation;
+        //return GameObject.Instantiate(prefab, position, rotation);
+        return gameObject;
     }
 
     private void GetLevelSpawnPoints()

@@ -75,7 +75,6 @@ public class NPCAnimationHandler : MonoBehaviour
 
     public void ResetIsJumpingUp()
     {
-        Debug.Log("Reset is jumping up test");
         animator.SetBool(isJumpingId, false);
         StartCoroutine(IsJumpingUpCoolDown());
     }

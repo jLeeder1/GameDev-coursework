@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityStandardAssets.Characters.FirstPerson;
 
 public class EntityRespawner : MonoBehaviour
 {
@@ -28,18 +29,43 @@ public class EntityRespawner : MonoBehaviour
         if (entity.teamType == TeamType.RED_TEAM)
         {
             spawnPoint = redTeamSpawnPoints[Random.Range(0, redTeamSpawnPoints.Count)];
-
+            Vector3 placeToSpawnNPC = spawnPoint.transform.position;
+            RespawnNPC(placeToSpawnNPC, entity, lookAtOnSpawn);
         }
         else
         {
             spawnPoint = blueTeamSpawnPoints[Random.Range(0, blueTeamSpawnPoints.Count)];
+            Vector3 placeToSpawnPlayer = spawnPoint.transform.position;
             lookAtOnSpawn = blueTeamLookAtOnSpawn;
+            RespawnPlayer(placeToSpawnPlayer, entity, lookAtOnSpawn);
         }
 
         // Generic for all
         StartCoroutine(entity.SpawnResizer());
-        Vector3 placeToSpawnEntity = spawnPoint.transform.position;
-        placeToSpawnEntity.y += 2f; // Ensures they don't spawn in the ground
+    }
+
+    private void RespawnPlayer(Vector3 positionToRespawn, Entity entity, Vector3 lookAtOnSpawn)
+    {
+        /*
+        CharacterController characterController = entity.GetComponent<CharacterController>();
+        FirstPersonController firstPersonController = entity.GetComponent<FirstPersonController>();
+
+        characterController.enabled = false;
+        firstPersonController.enabled = false;
+        */
+
+        entity.transform.position = positionToRespawn;
+        entity.transform.rotation = GetRotationToLookAtOnSpawn(positionToRespawn, lookAtOnSpawn);
+        /*
+        characterController.enabled = true;
+        firstPersonController.enabled = true;
+        */
+    }
+
+    private void RespawnNPC(Vector3 positionToSpawn, Entity entity, Vector3 lookAtOnSpawn)
+    {
+        StartCoroutine(entity.SpawnResizer());
+        Vector3 placeToSpawnEntity = positionToSpawn;
         entity.transform.position = placeToSpawnEntity;
         entity.transform.rotation = GetRotationToLookAtOnSpawn(placeToSpawnEntity, lookAtOnSpawn);
     }

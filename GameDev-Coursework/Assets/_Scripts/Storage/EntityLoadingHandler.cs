@@ -94,9 +94,9 @@ public class EntityLoadingHandler : MonoBehaviour
 
     private GameObject SpawnSingleEntity(GameObject prefab, Vector3 position, Quaternion rotation)
     {
-        GameObject gameObject = GameObject.Instantiate(prefab);
-        gameObject.transform.position = position;
-        gameObject.transform.rotation = rotation;
+        GameObject gameObject = GameObject.Instantiate(prefab, position, rotation);
+        //gameObject.transform.position = position;
+        //gameObject.transform.rotation = rotation;
         //return GameObject.Instantiate(prefab, position, rotation);
         return gameObject;
     }

@@ -39,6 +39,7 @@ public class OutOfBounds : MonoBehaviour
         }
     }
 
+    // was onTriggerEnter
     private void OnTriggerEnter(Collider other)
     {
         if ((NPC.value & 1 << other.gameObject.layer) != 0)

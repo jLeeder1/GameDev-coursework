@@ -11,4 +11,9 @@ public class SceneLoader : MonoBehaviour
     {
         GameManager.GameManagerInstance.LoadFromSaveFile(buildIndex);
     }
+
+    public void QuitGame()
+    {
+        Application.Quit();
+    }
 }

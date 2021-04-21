@@ -4,8 +4,8 @@ using UnityEngine.AI;
 
 public class BulletForceApplier : MonoBehaviour
 {
-    private float npcForce = 10f;
-    private float playerForce = 30f;
+    private float npcForce = 25f;
+    private float playerForce = 60f;
 
     private void OnCollisionEnter(Collision collision)
     {
@@ -22,7 +22,7 @@ public class BulletForceApplier : MonoBehaviour
         // Handles hitting NPCs
         if (navMeshAgent != null)
         {
-            HandleNpcHit(navMeshAgent, directionOfForce);
+            HandleNpcHit(navMeshAgent, directionOfForce, entity, collision);
             return;
         }
 
@@ -30,11 +30,21 @@ public class BulletForceApplier : MonoBehaviour
         HandlePlayerHit(entity, directionOfForce);
     }
 
-    private void HandleNpcHit(NavMeshAgent navMeshAgent, Vector3 directionOfForce)
+    private void HandleNpcHit(NavMeshAgent navMeshAgent, Vector3 directionOfForce, Entity entity, Collision collision)
     {
-        Vector3 forceVector = directionOfForce * npcForce;
-        navMeshAgent.velocity += forceVector;
-        StartCoroutine(DestroyGameObject());
+        if (!navMeshAgent.enabled)
+        {
+            Rigidbody rigidbody = entity.GetComponent<Rigidbody>();
+            ContactPoint positionOfForce = collision.GetContact(0);
+            rigidbody.AddForceAtPosition(directionOfForce * npcForce /3, positionOfForce.point, ForceMode.Impulse);
+        }
+        else
+        {
+            Vector3 forceVector = directionOfForce * npcForce;
+            navMeshAgent.velocity += forceVector;
+            entity.GetComponent<NPCGroundDetection>().HandleNavMeshDisable();
+            StartCoroutine(DestroyGameObject());
+        }
     }
 
     private void HandlePlayerHit(Entity entity, Vector3 directionOfForce)

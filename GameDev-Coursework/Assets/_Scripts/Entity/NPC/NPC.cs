@@ -8,7 +8,7 @@ public class NPC : Entity
     public GameObject playerObject { get; private set; }
 
 
-    public override string entityPrefabType { get => "NPC"; }
+    public override string entityPrefabType { get => GameConstants.NPC_PREFAB_SUFFIX; }
 
     protected void Awake()
     {

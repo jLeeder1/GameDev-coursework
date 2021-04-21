@@ -28,8 +28,8 @@
     // Resources
     public static string PREFAB_FOLDER_PREFIX = "Prefabs/";
     public static string PLAYER_PREFAB_SUFFIX = "FPSController";
-    //public static string NPC_PREFAB_SUFFIX = "aj_Variant";
-    public static string NPC_PREFAB_SUFFIX = "FixRotationNPC";
+    public static string NPC_PREFAB_SUFFIX = "aj_Variant";
+    //public static string NPC_PREFAB_SUFFIX = "FixRotationNPC";
 
     // Spawn look at
     public static string BLUE_TEAM_ON_SPAWN_LOOK_AT = "blueTeamOnSpawnLookAt";

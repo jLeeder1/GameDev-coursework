@@ -69,12 +69,12 @@ public class EntityLoadingHandler : MonoBehaviour
 
     private GameObject GetPrefabFromString(string prefabType)
     {
-        if (prefabType == "NPC")
+        if (prefabType.Equals(GameConstants.NPC_PREFAB_SUFFIX))
         {
             return NPCPrefab;
         }
 
-        if(prefabType == "FPSController")
+        if(prefabType.Equals(GameConstants.FPSCONTROLLER))
         {
             return PlayerPrefab;
         }

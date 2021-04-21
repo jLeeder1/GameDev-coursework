@@ -46,7 +46,7 @@ public class LoadGameController : MonoBehaviour
         // Find and spawn player first
         for (int i = 0; i < state.entityStates.Length; i++)
         {
-            if(state.entityStates[i].EntityPrefabType == "FPSController")
+            if(state.entityStates[i].EntityPrefabType.Equals(GameConstants.FPSCONTROLLER))
             {
                 playerEntityIndex = i;
                 GameObject obj = entityLoadingHandler.CreateEntityFromSaveGame(state.entityStates[i]);
@@ -61,7 +61,7 @@ public class LoadGameController : MonoBehaviour
                 continue;
 
             GameObject obj = entityLoadingHandler.CreateEntityFromSaveGame(state.entityStates[i]);
-            Entity entity = obj.GetComponent<Entity>();
+            Entity entity = obj.GetComponentInChildren<Entity>();
             objects.Add(entity.EntityUniqueIdentifier, obj);
         }
         return objects;

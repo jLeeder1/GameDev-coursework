@@ -3,145 +3,145 @@
   <entityStates>
     <EntitySaveState>
       <Position>
-        <x>-71.29239</x>
-        <y>9.99906</y>
-        <z>-29.50564</z>
+        <x>-16.1637039</x>
+        <y>8.58772</y>
+        <z>-62.044323</z>
       </Position>
       <Rotation>
-        <x>9.565085E-18</x>
-        <y>-0.986367</y>
-        <z>1.59623979E-18</z>
-        <w>-0.16456084</w>
+        <x>5.114949E-23</x>
+        <y>-0.5346284</y>
+        <z>-8.05596368E-23</z>
+        <w>0.845087349</w>
         <eulerAngles>
-          <x>5.04034751E-20</x>
-          <y>161.056564</y>
-          <z>-1.11123586E-15</z>
+          <x>1.79123064E-23</x>
+          <y>295.362579</y>
+          <z>-1.09350013E-20</z>
         </eulerAngles>
       </Rotation>
-      <EntityPrefabType>NPC</EntityPrefabType>
-      <Name>NPC5</Name>
+      <EntityPrefabType>FixRotationNPC</EntityPrefabType>
+      <Name>NPC11</Name>
       <gameObjectTagReferences />
     </EntitySaveState>
     <EntitySaveState>
       <Position>
-        <x>-82.9039459</x>
-        <y>9.999061</y>
-        <z>-26.0206184</z>
+        <x>-25.27401</x>
+        <y>9.116638</y>
+        <z>-57.6669464</z>
       </Position>
       <Rotation>
-        <x>-1.430947E-17</x>
-        <y>0.7272138</y>
-        <z>-1.34189143E-17</z>
-        <w>0.6864111</w>
+        <x>-4.20052655E-25</x>
+        <y>0.890568</y>
+        <z>-1.93870456E-25</z>
+        <w>0.4548502</w>
         <eulerAngles>
-          <x>-7.306252E-18</x>
-          <y>93.30664</y>
-          <z>-2.24793523E-15</z>
+          <x>-2.10919476E-24</x>
+          <y>125.889404</y>
+          <z>-5.29719467E-23</z>
         </eulerAngles>
       </Rotation>
-      <EntityPrefabType>NPC</EntityPrefabType>
-      <Name>NPC4</Name>
+      <EntityPrefabType>FixRotationNPC</EntityPrefabType>
+      <Name>NPC10</Name>
       <gameObjectTagReferences />
     </EntitySaveState>
     <EntitySaveState>
       <Position>
-        <x>-80.00083</x>
-        <y>9.999061</y>
-        <z>-26.4278641</z>
+        <x>-56.9461174</x>
+        <y>9.116639</y>
+        <z>-75.16808</z>
+      </Position>
+      <Rotation>
+        <x>9.05375E-24</x>
+        <y>0.7665946</y>
+        <z>7.651421E-24</z>
+        <w>0.642131567</w>
+        <eulerAngles>
+          <x>-5.940245E-24</x>
+          <y>100.098114</y>
+          <z>1.35834234E-21</z>
+        </eulerAngles>
+      </Rotation>
+      <EntityPrefabType>FixRotationNPC</EntityPrefabType>
+      <Name>NPC9</Name>
+      <gameObjectTagReferences />
+    </EntitySaveState>
+    <EntitySaveState>
+      <Position>
+        <x>-90.50711</x>
+        <y>8.278837</y>
+        <z>-12.4119635</z>
       </Position>
       <Rotation>
         <x>-0</x>
-        <y>0.6539018</y>
-        <z>-0</z>
-        <w>0.756579459</w>
+        <y>0.00722810626</y>
+        <z>-7.23783036E-25</z>
+        <w>0.9999739</w>
         <eulerAngles>
-          <x>-0</x>
-          <y>81.67286</y>
-          <z>-0</z>
+          <x>5.99495E-25</x>
+          <y>0.828287244</y>
+          <z>-8.29372636E-23</z>
         </eulerAngles>
       </Rotation>
-      <EntityPrefabType>NPC</EntityPrefabType>
-      <Name>NPC3</Name>
+      <EntityPrefabType>FixRotationNPC</EntityPrefabType>
+      <Name>NPC8</Name>
       <gameObjectTagReferences />
     </EntitySaveState>
     <EntitySaveState>
       <Position>
-        <x>-90.08875</x>
-        <y>8.819844</y>
-        <z>-25.0339756</z>
+        <x>-64.84837</x>
+        <y>8.871691</y>
+        <z>-9.666664</z>
       </Position>
       <Rotation>
-        <x>5.928497E-24</x>
-        <y>0.945859551</y>
-        <z>-2.01652786E-24</z>
-        <w>-0.3245763</w>
+        <x>-2.97785021E-23</x>
+        <y>0.7147656</y>
+        <z>-2.97785021E-23</z>
+        <w>0.6993642</w>
         <eulerAngles>
-          <x>-1.936322E-24</x>
-          <y>217.8798</y>
-          <z>7.17577263E-22</z>
+          <x>5.25552546E-23</x>
+          <y>91.24798</y>
+          <z>-4.825526E-21</z>
         </eulerAngles>
       </Rotation>
-      <EntityPrefabType>NPC</EntityPrefabType>
-      <Name>NPC2</Name>
+      <EntityPrefabType>FixRotationNPC</EntityPrefabType>
+      <Name>NPC7</Name>
       <gameObjectTagReferences />
     </EntitySaveState>
     <EntitySaveState>
       <Position>
-        <x>-67.86419</x>
-        <y>9.41362</y>
-        <z>-15.6099977</z>
+        <x>-33.36676</x>
+        <y>9.116639</y>
+        <z>-50.6659</z>
       </Position>
       <Rotation>
-        <x>1.22513332E-17</x>
-        <y>0.184312046</y>
-        <z>6.535723E-17</z>
-        <w>0.982867837</w>
+        <x>6.20385459E-25</x>
+        <y>-0.326713175</y>
+        <z>-1.65436123E-24</z>
+        <w>0.9451236</w>
         <eulerAngles>
-          <x>-5.366892E-19</x>
-          <y>21.2420521</y>
-          <z>7.619832E-15</z>
+          <x>5.2528E-24</x>
+          <y>321.8612</y>
+          <z>-2.02398913E-22</z>
         </eulerAngles>
       </Rotation>
-      <EntityPrefabType>NPC</EntityPrefabType>
-      <Name>NPC1</Name>
+      <EntityPrefabType>FixRotationNPC</EntityPrefabType>
+      <Name>NPC6</Name>
       <gameObjectTagReferences />
     </EntitySaveState>
     <EntitySaveState>
       <Position>
-        <x>-74.95847</x>
-        <y>9.99906</y>
-        <z>-25.45533</z>
+        <x>0.2736749</x>
+        <y>9.473993</y>
+        <z>3.3881104</z>
       </Position>
       <Rotation>
-        <x>-1.771847E-18</x>
-        <y>-0.7208978</y>
-        <z>-1.696022E-18</z>
-        <w>-0.693041444</w>
+        <x>0.02431752</x>
+        <y>-0.767527938</y>
+        <z>0.0239572842</z>
+        <w>0.6401058</w>
         <eulerAngles>
-          <x>6.078986E-19</x>
-          <y>92.25731</y>
-          <z>2.81062631E-16</z>
-        </eulerAngles>
-      </Rotation>
-      <EntityPrefabType>NPC</EntityPrefabType>
-      <Name>NPC0</Name>
-      <gameObjectTagReferences />
-    </EntitySaveState>
-    <EntitySaveState>
-      <Position>
-        <x>-8.732289</x>
-        <y>9.475486</y>
-        <z>0.854826152</z>
-      </Position>
-      <Rotation>
-        <x>-0.00584421</x>
-        <y>-0.707973</y>
-        <z>-0.00688455626</z>
-        <w>0.7061818</w>
-        <eulerAngles>
-          <x>358.968475</x>
-          <y>269.8556</y>
-          <z>359.917</z>
+          <x>3.89380217</x>
+          <y>259.6421</y>
+          <z>359.6176</z>
         </eulerAngles>
       </Rotation>
       <EntityPrefabType>FPSController</EntityPrefabType>
@@ -153,7 +153,7 @@
   </entityStates>
   <scoreStructure>
     <blueTeamScore>20</blueTeamScore>
-    <redTeamScore>0</redTeamScore>
-    <playerScore>20</playerScore>
+    <redTeamScore>1</redTeamScore>
+    <playerScore>21</playerScore>
   </scoreStructure>
 </GameState>

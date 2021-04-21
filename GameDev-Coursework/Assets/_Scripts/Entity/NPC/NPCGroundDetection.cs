@@ -3,6 +3,7 @@ using UnityEngine.AI;
 
 public class NPCGroundDetection : MonoBehaviour
 {
+    public bool IsMoreThanTwoRaysHittingOutOfBounds { get; private set; }
     public DetectGroundWithRay[] detectGroundWithRaysInChildren { get; private set; }
     private int limitOfRaysHittingGround = 2;
     private int numberOfRaysHittingTheGround = 0;
@@ -57,5 +58,23 @@ public class NPCGroundDetection : MonoBehaviour
         }
 
         numberOfRaysHittingTheGround = numOfRaysHittingGround;
+
+        if(numberOfRaysHittingTheGround >= 2)
+        {
+            IsMoreThanTwoRaysHittingOutOfBounds = true;
+        }
+        else
+        {
+            IsMoreThanTwoRaysHittingOutOfBounds = false;
+        }
+    }
+
+    public void HandleNavMeshDisable()
+    {
+        if (IsMoreThanTwoRaysHittingOutOfBounds)
+        {
+            navMeshAgent.enabled = false;
+        }
+
     }
 }
